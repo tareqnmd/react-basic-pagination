@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import useFetch from '../hooks/useFetch';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppContext = createContext<any>({});
 export const AppContextProvider = ({
 	children,
