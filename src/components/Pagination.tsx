@@ -20,12 +20,12 @@ const Pagination = () => {
 			/>
 			<div>
 				<button
-					onClick={() => setActivePage((prev) => prev - 1)}
+					onClick={() => setActivePage((prev: number) => prev - 1)}
 					disabled={activePage === 1}
 				>
 					Prev
 				</button>
-				{pages.map((item) => (
+				{pages.map((item: number) => (
 					<button
 						onClick={() => setActivePage(item)}
 						className={`${activePage === item ? 'active-page' : ''}`}
@@ -35,7 +35,7 @@ const Pagination = () => {
 					</button>
 				))}
 				<button
-					onClick={() => setActivePage((prev) => prev + 1)}
+					onClick={() => setActivePage((prev: number) => prev + 1)}
 					disabled={activePage === pages[pages.length - 1]}
 				>
 					Next
