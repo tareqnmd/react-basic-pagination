@@ -1,0 +1,21 @@
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flex-col {
+	flex-direction: column;
+}
+.text-center {
+	text-align: center;
+}
+.w-40p {
+	width: 40px;
+}
+.g-10 {
+	gap: 10px;
+}
+.active-page {
+	background: black;
+	color: white;
+}
