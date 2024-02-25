@@ -17,7 +17,7 @@ export const AppContextProvider = ({
 
 	useEffect(() => {
 		if (data) {
-			const paginationData = data.slice(
+			const paginationData = [...data].slice(
 				perPage * (activePage - 1),
 				perPage * activePage
 			);
@@ -28,7 +28,7 @@ export const AppContextProvider = ({
 	useEffect(() => {
 		if (data && perPage) {
 			setPages(
-				[...Array(Math.ceil(data?.length / perPage) + 1).keys()].slice(1)
+				[...Array(Math.ceil([...data]?.length / perPage) + 1).keys()].slice(1)
 			);
 			setActivePage(1);
 		}
