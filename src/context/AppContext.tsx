@@ -6,43 +6,33 @@ export const AppContextProvider = ({
 }: {
 	children: React.ReactNode;
 }) => {
-	const data = useFetch('/todos');
 	const [filterValue, setFilterValue] = useState('');
+	const data = useFetch(
+		`/todos${filterValue ? `?title_like=${filterValue}` : ''}`
+	);
 	const [allTodo, setAllTodo] = useState([]);
 	const [perPage, setPerPage] = useState(10);
 	const [pages, setPages] = useState([1]);
 	const [activePage, setActivePage] = useState(1);
-	const [filteredData, setFilteredData] = useState([]);
 
 	useEffect(() => {
 		if (data) {
-			const filteredData = data.filter((item) =>
-				item.title.includes(filterValue)
-			);
-			setFilteredData(filteredData);
-		}
-	}, [data, filterValue]);
-
-	useEffect(() => {
-		if (filteredData) {
-			const paginationData = filteredData.slice(
+			const paginationData = data.slice(
 				perPage * (activePage - 1),
 				perPage * activePage
 			);
 			setAllTodo(paginationData);
 		}
-	}, [filteredData, perPage, activePage]);
+	}, [data, perPage, activePage]);
 
 	useEffect(() => {
-		if (filteredData && perPage) {
+		if (data && perPage) {
 			setPages(
-				[...Array(Math.ceil(filteredData?.length / perPage) + 1).keys()].slice(
-					1
-				)
+				[...Array(Math.ceil(data?.length / perPage) + 1).keys()].slice(1)
 			);
 			setActivePage(1);
 		}
-	}, [filteredData, perPage]);
+	}, [data, perPage]);
 
 	return (
 		<AppContext.Provider
