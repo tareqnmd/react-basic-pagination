@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import useFetch from '../hooks/useFetch';
-const AppContext = createContext({});
+const AppContext = createContext<any>({});
 export const AppContextProvider = ({
 	children,
 }: {
